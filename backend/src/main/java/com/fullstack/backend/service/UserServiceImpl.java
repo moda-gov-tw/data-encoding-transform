@@ -29,26 +29,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ListResponse listUsersByFile() {
-//        List<UserProfile> users = new ArrayList<>();
-//        AtomicLong cnt = new AtomicLong(1L);
-//
-//        try {
-//            ClassPathResource resource = new ClassPathResource("testData/User.data");
-//            InputStream inputStream = resource.getInputStream();
-//            logger.info("Successfully opened the resource: {} " +
-//                    "from the classpath. Starting to read the data.", resource.getPath());
-//            try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-//                Stream<String> lines = reader.lines();
-//                lines.map(this::mapLineToUserProfile)
-//                        .forEach(user -> {
-//                            user.setId(cnt.getAndIncrement());
-//                            users.add(user);
-//                        });
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            throw new RuntimeException("Error reading User.data", e);
-//        }
         List<UserProfile> users = repository.findAll();
         ListResponse response = new ListResponse();
         response.setData(users);

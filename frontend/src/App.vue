@@ -45,7 +45,7 @@ export default {
 .custom-jumbotron {
     padding: 1rem 2rem; 
     margin-bottom: 1rem; 
-    background-color: #6393db; 
+    background-color: #e5eaeb; 
   }
   .custom-container {
     padding: 0.5rem;

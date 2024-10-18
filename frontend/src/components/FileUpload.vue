@@ -43,9 +43,9 @@ export default {
             'Content-Type': 'multipart/form-data'
           }
         });
-        this.uploadStatus = response.bodyText + '上傳成功';
+        this.uploadStatus = '上傳成功';
       } catch (error) {
-        this.uploadStatus = error.message + '上傳失敗';
+        this.uploadStatus = '上傳失敗';
       }
     }
   }
