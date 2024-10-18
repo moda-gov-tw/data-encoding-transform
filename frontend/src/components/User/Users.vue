@@ -16,7 +16,7 @@
             <th scope="col">姓名</th>
             <th scope="col">電話</th>
             <th scope="col">年齡</th>
-            <th scope="col">動作</th>  //編輯、刪除待開發
+            <th scope="col">動作</th>
           </tr>
         </thead>
         <tbody>
@@ -51,13 +51,9 @@
     </div>
   </div>
 </div>
-
 </template>
 
-
 <script>
-import { EventBus } from "./../../event-bus";
-
 export default {
   name: "Users",
   data() {
@@ -78,35 +74,10 @@ export default {
       },
       () => {
         this.alert.isOpen = true;
-        this.alert.msg = "Users couldn't fetch from server!";
+        this.alert.msg = "後端程式發生異常";
       }
     );
-
-    EventBus.$on("userIsCreated", data => {
-      if (data) {
-        if (data.id) {
-          this.users.push(data);
-          this.total++;
-          if (this.alert.isOpen) this.alert.isOpen = false;
-        } else {
-          this.alert.isOpen = true;
-          this.alert.msg = "The User couldn't create! " + data;
-        }
-      } else {
-        this.alert.isOpen = true;
-        this.alert.msg = "Couldn't get any response from the server!";
-      }
-    });
-
-    EventBus.$on("userIsUpdated", data => {
-      if (data.id) {
-        var userIndex = this.users.findIndex(user => user.id == data.id);
-        if (userIndex != -1) this.$set(this.users, userIndex, data);
-      } else {
-        this.alert.isOpen = true;
-        this.alert.msg = "The User couldn't update! " + data;
-      }
-    });
+    
   }
 };
 </script>
