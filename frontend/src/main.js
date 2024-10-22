@@ -1,23 +1,20 @@
-import Vue from 'vue'
-import App from './App.vue'
-import VueResource from 'vue-resource'
-import VueRouter from 'vue-router'
-import Vuelidate from 'vuelidate'
-import { routes } from './routes'
+import { createApp } from 'vue';
+import App from './App.vue';
+import { createRouter, createWebHistory } from 'vue-router';
+import routes from './routes'; 
+import Vuelidate from '@vuelidate/core'; 
+import axios from 'axios'; 
 
-Vue.use(VueResource)
-Vue.use(VueRouter)
-Vue.use(Vuelidate)
-
-Vue.config.productionTip = false
-Vue.http.options.root = 'http://localhost:4000/api/'
-
-const router = new VueRouter({
-  routes,
-  mode: 'history'
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+});
+const app = createApp(App);
+app.use(Vuelidate);
+app.use(router);
+app.config.globalProperties.$http = axios.create({
+  baseURL: 'http://localhost:4000/api/',
+  timeout: 1000,
 });
 
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount('#app')
+app.mount('#app');
