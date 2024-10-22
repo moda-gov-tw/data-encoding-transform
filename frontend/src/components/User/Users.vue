@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="card border-dark"
-    style="max-width: auto; margin: auto; padding: auto"
-  >
+  <div class="card border-dark" style="max-width: auto; margin: auto; padding: auto">
     <div class="card-body">
       <div>
         <div
@@ -64,7 +61,7 @@
 
 <script>
 export default {
-  name: "Users",
+  name: "UsersList",
   data() {
     return {
       alert: {
@@ -76,17 +73,32 @@ export default {
     };
   },
   created() {
-    this.$http.get("user/listByFile").then(
-      response => {
-        this.users = response.body.data;
-        this.total = response.data.totalCount;
-      },
-      () => {
-        this.alert.isOpen = true;
-        this.alert.msg = "後端程式發生異常";
-      }
-    );
-
+    this.fetchUsers();
+  },
+  methods: {
+    fetchUsers() {
+      this.$http.get("user/listByFile")
+        .then(response => {
+          if (response.data && response.data.data) {
+            this.users = response.data.data; 
+            this.total = response.data.totalCount;
+          } else {
+            this.alert.isOpen = true;
+            this.alert.msg = "無法取得用戶資料"; 
+          }
+        })
+        .catch(error => {
+          console.error(error);
+          this.alert.isOpen = true;
+          this.alert.msg = "後端程式發生異常";
+        });
+    },
+    editUser(id) {
+      console.log(`Edit user with ID: ${id}`);
+    },
+    removeUser(id) {
+      console.log(`Remove user with ID: ${id}`);
+    }
   }
 };
 </script>
