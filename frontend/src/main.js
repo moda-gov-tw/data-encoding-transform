@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import { createRouter, createWebHistory } from 'vue-router';
-import routes from './routes'; 
+import { routes } from './routes'; 
 import Vuelidate from '@vuelidate/core'; 
 import axios from 'axios'; 
 
