@@ -16,6 +16,9 @@
       <li class="nav-item">
         <router-link to="/users" class="nav-link" active-class="active">人員資料列表</router-link>
       </li>
+      <li class="nav-item">
+        <router-link to="/fileExport" class="nav-link" active-class="active">匯出資料庫</router-link>
+      </li>
     </ul>
     <br>
     <router-view></router-view>
