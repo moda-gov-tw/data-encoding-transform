@@ -45,6 +45,12 @@ export default {
   },
   methods: {
     async fileExport() {
+
+      if (!this.filled) {
+      this.exportStatus = '請輸入填充字元';
+      return; // 終止操作
+    }
+    
       try {
         // 發送 POST 請求到後端 API
         const response = await fetch('http://localhost:4000/api/fileExport', {
