@@ -5,26 +5,26 @@
 >
 
 ## 1.所用技術
-
-- Spring Boot
-- Spring Data JPA
-- Hibernate
-- H2 Database Engine
-- Swagger
-- Vue3
+* 前端(frontend)
+  - VueJS
+* 後端(backend)
+  - Spring Boot
+  - Spring Data JPA
+  - Hibernate
+  - H2 Database Engine
+  - Swagger
 
 ## 2.安裝指南
-
 > 請確保您的環境中安裝有 Java 18 及 Maven 3 以上版本
 
 ```bat
 # 執行步驟
-> git clone https://gitlab.iisigroup.com/ps150/g-p231301/modapc/byteextractproject.git
-> cd byteextractproject
-> mvn clean package
-> java -jar target/byteExtractProject-0.0.1-SNAPSHOT.jar
+> git clone https://gitlab.iisigroup.com/ps150/g-p231301/modapc/dataencodingtransform.git
+> cd dataencodingtransform
+> mvn clean package 
+> java -jar backend\target\backend-1.0-SNAPSHOT.jar
 ```
-
+以上指令將同時完成前端與後端的打包作業，編譯可執行的jar檔，若要實現前後端分離啟動，可以分別進入前端目錄 frontend 和後端目錄 backend 進行執行
 ## 3.使用情境範例
 
 > 系統需從大量的原始數據檔案中提取客戶資訊。透過「智能數據解析及擷取」元件，使用設定檔來定義每個資料欄位的長度，能快速且準確地解析出客戶的姓名和年齡等資訊。
@@ -61,7 +61,9 @@ USER.AGE=25,3
 ```
 
 ## 4.結果展示
-
+```plaintext
+網址 http://localhost:4000/
+```
 ![範例圖片](images/Entry.png)
 ![範例圖片](images/Import_Data.png)
 ![範例圖片](images/Data_Overview.png)
