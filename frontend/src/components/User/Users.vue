@@ -20,7 +20,6 @@
               <th scope="col">姓名</th>
               <th scope="col">電話</th>
               <th scope="col">年齡</th>
-              <th scope="col">動作</th>
             </tr>
           </thead>
           <tbody>
@@ -29,28 +28,6 @@
               <td>{{ user.name }}</td>
               <td>{{ user.phone }}</td>
               <td>{{ user.age }}</td>
-              <td>
-                <button
-                  id="action-button"
-                  title="Edit"
-                  class="btn btn-warning"
-                  role="button"
-                  @click="editUser(user.id)"
-                >
-                  <i class="fa fa-edit"></i>
-                  編輯
-                </button>
-                <button
-                  id="action-button"
-                  title="Remove"
-                  class="btn btn-danger"
-                  role="button"
-                  @click="removeUser(user.id)"
-                >
-                  <i class="fa fa-trash-alt"></i>
-                  刪除
-                </button>
-              </td>
             </tr>
           </tbody>
         </table>
