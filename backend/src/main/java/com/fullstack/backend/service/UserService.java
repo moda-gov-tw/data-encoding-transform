@@ -7,5 +7,5 @@ import java.io.InputStream;
 public interface UserService {
     ListResponse listUsersByFile();
 
-    void importByRowdata(InputStream is);
+    void importByRowData(InputStream is);
 }

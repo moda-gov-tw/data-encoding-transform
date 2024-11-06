@@ -23,7 +23,7 @@ public class FileUploadController {
     @PostMapping("/upload")
     public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
         StringBuilder content = new StringBuilder();
-        userService.importByRowdata(file.getInputStream());
+        userService.importByRowData(file.getInputStream());
         return new ResponseEntity<>(file.getOriginalFilename(), HttpStatus.OK);
     }
 }

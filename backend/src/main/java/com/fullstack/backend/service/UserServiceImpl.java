@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void importByRowdata(InputStream is) {
+    public void importByRowData(InputStream is) {
         List<UserProfile> users = new ArrayList<>();
         try {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
                         });
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Error reading User.data", e);
             throw new RuntimeException("Error reading User.data", e);
         }
         repository.saveAll(users);
