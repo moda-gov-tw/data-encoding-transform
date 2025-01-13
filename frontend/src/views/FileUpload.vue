@@ -10,7 +10,6 @@
         <div class="alert" :class="{'alert-success': uploadStatus.includes('成功'), 'alert-danger': uploadStatus.includes('失敗')}">
           {{ uploadStatus }}
         </div>
-
       </div>
     </div>
   </div>
@@ -18,7 +17,7 @@
 
 <script>
 import axios from 'axios';
-
+import { uploadFile } from '@/services/fileUtilApi';
 export default {
   name: "FileUpload",
   data() {
@@ -41,14 +40,9 @@ export default {
       formData.append('file', this.selectedFile);
 
       try {
-        await axios.post('http://localhost:5000/api/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
+        const uploadStatus = await uploadFile(formData);
         this.uploadStatus = '上傳成功';
       } catch (error) {
-        console.error(error); 
         this.uploadStatus = '上傳失敗';
       }
     }

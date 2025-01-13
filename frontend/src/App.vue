@@ -2,9 +2,8 @@
   <div class="container">
     <div class="jumbotron custom-jumbotron">
       <div class="custom-container">
-      <h1 class="display-5">資料動態編碼轉換系統</h1>
-  </div>
-  <hr>
+        <h1 class="display-6 custom-title">資料動態編碼轉換系統</h1>
+      </div>
     </div>
     <ul class="nav nav-tabs">
       <li class="nav-item">
@@ -20,37 +19,38 @@
         <router-link to="/fileExport" class="nav-link" active-class="active">匯出資料庫</router-link>
       </li>
     </ul>
-    <br>
     <router-view></router-view>
   </div>
 </template>
 
-<script>
-
-export default {
-  name: 'app',
-  components: {
-  
-  }
-}
-</script>
-
 <style>
-.error {
-  color: red;
+.custom-jumbotron {
+  margin-bottom: 5;
+  padding-bottom: 0;
 }
 
-.error-input {
-  border-color: red;
-  color: red;
+.container {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .custom-jumbotron {
-    padding: 1rem 2rem; 
-    margin-bottom: 1rem; 
-    background-color: #e5eaeb; 
-  }
-  .custom-container {
-    padding: 0.5rem;
-  }
+   background-color: #5c9ee0;
+  padding: 10px 20px;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  border-radius: 5px;
+}
+
+.custom-title {
+  font-size: 1.5rem;
+  margin: 0;
+  text-align: center;
+}
+
+.nav-item .nav-link:hover {
+  background-color: #d39c37;
+}
 </style>

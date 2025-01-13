@@ -19,7 +19,7 @@
 
       <!-- 按鈕觸發請求 -->
       <div class="input-group mb-3">
-        <button class="btn btn-primary" @click="fileExport">匯出資料至檔案</button>
+        <button class="btn btn-primary" @click="handleFileExport">匯出資料至檔案</button>
       </div>
 
       <!-- 匯出狀態顯示 -->
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { fileExport } from '@/services/fileUtilApi';
 export default {
   name: "FileExport",
   data() {
@@ -43,43 +44,22 @@ export default {
       exportStatus: ''    // 匯出狀態
     };
   },
-  methods: {
-    async fileExport() {
-
-      if (!this.filled) {
-      this.exportStatus = '請輸入填充字元';
-      return; // 終止操作
-    }
-    
+ methods: {
+    async handleFileExport() {
       try {
-        // 發送 POST 請求到後端 API
-        const response = await fetch('http://localhost:5000/api/fileExport', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          body: new URLSearchParams({
-            alignment: this.alignment,
-            filled: this.filled,
-            charset: this.charset
-          })
+        const downloadUrl = await fileExport({
+          alignment: this.alignment,
+          filled: this.filled,
+          charset: this.charset,
         });
-
-        // 根據後端響應的結果顯示匯出狀態
-        if (response.ok) {
-          // 匯出成功，重定向到文件下載 URL
-          window.location.href = 'http://localhost:5000/api/download';
-          this.exportStatus = '匯出成功';
-        } else {
-          this.exportStatus = '匯出失敗';
-        }
+        // 匯出成功，重定向到下載 URL
+        window.location.href = downloadUrl;
+        this.exportStatus = '匯出成功';
       } catch (error) {
-        // 捕獲異常並更新匯出狀態
         this.exportStatus = '匯出失敗';
-        console.error(error);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
