@@ -57,10 +57,10 @@ public class FileExportController {
             for (UserProfile userProfile : users) {
 
                 String name = fillString(userProfile.getName(), "USER.NAME", alignment, filled, charset);
-                String phone = fillString(userProfile.getPhone(), "USER.PHONE", alignment, filled, charset);
+                String pno = fillString(userProfile.getPno(), "USER.PNO", alignment, filled, charset);
                 String age = fillString(String.valueOf(userProfile.getAge()), "USER.AGE", alignment, filled, charset);
 
-                dataBuilder.append(name).append(phone).append(age).append(System.lineSeparator());
+                dataBuilder.append(name).append(pno).append(age).append(System.lineSeparator());
             }
 
             // 寫入文件

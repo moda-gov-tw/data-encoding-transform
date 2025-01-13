@@ -37,7 +37,7 @@
 ```properties
 #擋頭.欄位=起始位置,擷取長度(bytes)
 USER.NAME=0,15
-USER.PHONE=15,10
+USER.PNO=15,10
 USER.AGE=25,3
 ```
 

@@ -53,7 +53,7 @@ export default {
     
       try {
         // 發送 POST 請求到後端 API
-        const response = await fetch('http://localhost:4000/api/fileExport', {
+        const response = await fetch('http://localhost:5000/api/fileExport', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -68,7 +68,7 @@ export default {
         // 根據後端響應的結果顯示匯出狀態
         if (response.ok) {
           // 匯出成功，重定向到文件下載 URL
-          window.location.href = 'http://localhost:4000/api/download';
+          window.location.href = 'http://localhost:5000/api/download';
           this.exportStatus = '匯出成功';
         } else {
           this.exportStatus = '匯出失敗';

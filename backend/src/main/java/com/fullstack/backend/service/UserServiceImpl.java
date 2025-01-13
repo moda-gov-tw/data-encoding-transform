@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
     private UserProfile mapLineToUserProfile(String line) {
         Map<String, String> userFields = ImportDataUtils.getAllField("USER", line);
         String name = Optional.ofNullable(userFields.get("NAME")).orElse("Unknown");
-        String phone = Optional.ofNullable(userFields.get("PHONE")).orElse("Unknown");
+        String pno = Optional.ofNullable(userFields.get("PNO")).orElse("Unknown");
         int age = Optional.ofNullable(userFields.get("AGE"))
                 .map(ageStr -> {
                     try {
@@ -68,6 +68,6 @@ public class UserServiceImpl implements UserService {
                     }
                 })
                 .orElse(0);
-        return new UserProfile(name, phone, age);
+        return new UserProfile(name, pno, age);
     }
 }

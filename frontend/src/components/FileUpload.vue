@@ -10,6 +10,7 @@
         <div class="alert" :class="{'alert-success': uploadStatus.includes('成功'), 'alert-danger': uploadStatus.includes('失敗')}">
           {{ uploadStatus }}
         </div>
+
       </div>
     </div>
   </div>
@@ -40,7 +41,7 @@ export default {
       formData.append('file', this.selectedFile);
 
       try {
-        await axios.post('http://localhost:4000/api/upload', formData, {
+        await axios.post('http://localhost:5000/api/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }

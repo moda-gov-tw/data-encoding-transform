@@ -15,15 +15,15 @@ public class UserProfile {
     private Long id;
 
     private String name;
-    private String phone;
+    private String pno;
     private Integer age;
     ;
     public UserProfile() {
     }
 
-    public UserProfile(String name, String phone, Integer age) {
+    public UserProfile(String name, String pno, Integer age) {
         this.name = name;
-        this.phone = phone;
+        this.pno = pno;
         this.age = age;
     }
 }
