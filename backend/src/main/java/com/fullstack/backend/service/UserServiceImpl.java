@@ -43,9 +43,7 @@ public class UserServiceImpl implements UserService {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
                 Stream<String> lines = reader.lines();
                 lines.map(this::mapLineToUserProfile)
-                        .forEach(user -> {
-                            users.add(user);
-                        });
+                        .forEach(users::add);
             }
         } catch (IOException e) {
             logger.error("Error reading User.data", e);
