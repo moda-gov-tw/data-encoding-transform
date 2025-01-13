@@ -4,14 +4,13 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ImportDataUtils {
-    private static String CONFIG_FILE  = "config";
+    private static final String CONFIG_FILE  = "config";
 
     public static Map<String, String> getAllField(String prefix, String line) {
         return ResourceBundler.keySet(CONFIG_FILE).stream()
             .filter(key -> key.contains(prefix))
             .collect(Collectors.toMap(key -> key.split("\\.")[1], key -> getField(key, line)));
     }
-
 
     private static String getField(String key, String line) {
         String[] split = ResourceBundler.getProps(CONFIG_FILE, key).split(",");

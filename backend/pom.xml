@@ -93,7 +93,7 @@
                             <goal>resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>src/main/resources/public</outputDirectory>
+                            <outputDirectory>src/main/resources/static</outputDirectory>
                         </configuration>
                     </execution>
                     <execution>
@@ -103,13 +103,13 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>src/main/resources/public</outputDirectory>
+                            <outputDirectory>src/main/resources/static</outputDirectory>
                             <overwrite>true</overwrite>
                             <resources>
                                 <resource>
-                                    <directory>${project.parent.basedir}/frontend/target/dist</directory>
+                                    <directory>${project.parent.basedir}/frontend/dist</directory>
                                     <includes>
-                                        <include>static/</include>
+                                        <include>assets/</include>
                                         <include>index.html</include>
                                         <include>favicon.ico</include>
                                     </includes>

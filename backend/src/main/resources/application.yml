@@ -13,13 +13,6 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     defer-datasource-initialization : true
 
-org:
-  jobrunr:
-    background-job-server:
-      enabled: true
-    dashboard:
-      enabled: true
-
 springdoc:
   api-docs:
     enabled: true
@@ -27,7 +20,7 @@ springdoc:
     enabled: true
 
 logging:
-  file.name: logs/application.log
+  file.name: logs/det.log
   pattern:
     console: "%d %-5level %logger : %msg%n"
     file: "%d %-5level [%thread] %logger : %msg%n"
@@ -37,6 +30,6 @@ logging:
     org.hibernate: ERROR
 logback:
   rollingpolicy:
-    file-name-pattern: logs/application-%d{yyyy-MM-dd}.log
+    file-name-pattern: logs/det-%d{yyyy-MM-dd}.log
     max-file-size: 10MB
     max-history: 7

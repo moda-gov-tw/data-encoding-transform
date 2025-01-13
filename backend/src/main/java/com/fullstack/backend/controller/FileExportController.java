@@ -3,9 +3,12 @@ package com.fullstack.backend.controller;
 import com.fullstack.backend.model.UserProfile;
 import com.fullstack.backend.repository.UserRepository;
 import com.fullstack.backend.service.UserService;
+import com.fullstack.backend.service.UserServiceImpl;
 import com.fullstack.backend.util.FillerUtils;
 import com.fullstack.backend.util.ResourceBundler;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -22,11 +25,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
+import java.util.logging.Level;
 
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
 public class FileExportController {
+
+    private static final Logger logger = LoggerFactory.getLogger(FileExportController.class);
 
     @Autowired
     private UserService userService;
@@ -50,7 +56,6 @@ public class FileExportController {
             if (users.isEmpty()) {
                 return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // 沒有資料時返回 204
             }
-
             // 準備寫入文件
             StringBuilder dataBuilder = new StringBuilder();
             // 處理資料
@@ -62,38 +67,28 @@ public class FileExportController {
 
                 dataBuilder.append(name).append(pno).append(age).append(System.lineSeparator());
             }
-
             // 寫入文件
             Files.writeString(filePath, dataBuilder.toString(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 
             // 準備文件下載
             return createFileResponse(filePath);
-
         } catch (IOException e) {
-
-            e.printStackTrace();
+            logger.error("An IOException occurred: {}", e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-
         }
     }
 
     @GetMapping("/download")
     public ResponseEntity<InputStreamResource> downloadFile() {
-
         Path filePath = Path.of("userInfo.txt");
-
         if (!Files.exists(filePath)) {
-
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // 檔案不存在時返回 404
-
         }
-
         return createFileResponse(filePath);
     }
 
     //創建文件
     private ResponseEntity<InputStreamResource> createFileResponse(Path filePath) {
-
         try {
             FileInputStream fileInputStream = new FileInputStream(filePath.toFile());
 
@@ -108,7 +103,7 @@ public class FileExportController {
                     .body(new InputStreamResource(fileInputStream));
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("An IOException occurred: {}", e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }

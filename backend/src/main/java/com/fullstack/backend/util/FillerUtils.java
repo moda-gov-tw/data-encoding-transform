@@ -48,9 +48,6 @@ public class FillerUtils {
             //預設在右邊補
             content = StringUtils.rightPad(content, fillerCount, filled);
         }
-
         return content;
-
     }
-
 }
