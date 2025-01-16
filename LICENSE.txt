@@ -313,5 +313,5 @@ Below is a list of 104 third-party dependencies, along with their licenses.
      (Apache License, Version 2.0) Spring Data Core (org.springframework.data:spring-data-commons:3.3.5 - https://spring.io/projects/spring-data)
      (Apache License, Version 2.0) Spring Data JPA (org.springframework.data:spring-data-jpa:3.3.5 - https://projects.spring.io/spring-data-jpa)
      (Apache-2.0) Swagger UI (org.webjars:swagger-ui:5.17.14 - https://www.webjars.org)
-     (The Apache Software License, Version 2.0) org.xmlunit:xmlunit-core (org.xmlunit:xmlunit-core:2.9.1 - https://www.xmlunit.org/)
+     (The Apache Software License, Version 2.0) org.xmlunit:xmlunit-core (org.xmlunit:xmlunit-core:2.10.0 - https://www.xmlunit.org/)
      (Apache License, Version 2.0) SnakeYAML (org.yaml:snakeyaml:2.2 - https://bitbucket.org/snakeyaml/snakeyaml)
