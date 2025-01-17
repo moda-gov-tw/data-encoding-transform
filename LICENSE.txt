@@ -211,6 +211,7 @@ If you modify any source code and release it, you must comply with the requireme
 
 Below is a list of 104 third-party dependencies, along with their licenses.
 
+
      (Eclipse Public License - v 1.0) (GNU Lesser General Public License) Logback Classic Module (ch.qos.logback:logback-classic:1.5.11 - http://logback.qos.ch/logback-classic)
      (Eclipse Public License - v 1.0) (GNU Lesser General Public License) Logback Core Module (ch.qos.logback:logback-core:1.5.11 - http://logback.qos.ch/logback-core)
      (Apache License, Version 2.0) ClassMate (com.fasterxml:classmate:1.7.0 - https://github.com/FasterXML/java-classmate)
